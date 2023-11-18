@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://ch0yli1p75mgr"]
+
+[ext_resource type="TileSet" uid="uid://bfkvak6a82rpe" path="res://Assets/TileSets/TmpTileSet.tres" id="1_fgh23"]
+[ext_resource type="Script" path="res://Scripts/PlayerMovement.cs" id="2_p7vn5"]
+[ext_resource type="Texture2D" uid="uid://bifxc71yvqsci" path="res://Assets/Textures/TmpChar.png" id="3_0bsqw"]
+[ext_resource type="Texture2D" uid="uid://2f3otau18v7f" path="res://Assets/Textures/SelectionBox.png" id="4_63gpw"]
+[ext_resource type="Script" path="res://Scripts/TileCursor.cs" id="5_3fthu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jum0"]
+size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsvca"]
+atlas = ExtResource("4_63gpw")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqkqe"]
+atlas = ExtResource("4_63gpw")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6npim"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsvca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqkqe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="JosephScene" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_fgh23")
+format = 2
+layer_0/tile_data = PackedInt32Array(262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262150, 0, 65536)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(96, 118)
+script = ExtResource("2_p7vn5")
+JumpVelocity = -800.0
+gravityScale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_3jum0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("3_0bsqw")
+
+[node name="TileCursor" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("player", "tileMap")]
+position = Vector2(96, 118)
+sprite_frames = SubResource("SpriteFrames_6npim")
+frame_progress = 0.966507
+speed_scale = 0.25
+script = ExtResource("5_3fthu")
+player = NodePath("../Player")
+tileMap = NodePath("../TileMap")

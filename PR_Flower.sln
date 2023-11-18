@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PR_Flower", "PR_Flower.csproj", "{F1511C59-D7C7-47E0-8CA4-E7C3A5A6EE5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1511C59-D7C7-47E0-8CA4-E7C3A5A6EE5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1511C59-D7C7-47E0-8CA4-E7C3A5A6EE5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1511C59-D7C7-47E0-8CA4-E7C3A5A6EE5D}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{F1511C59-D7C7-47E0-8CA4-E7C3A5A6EE5D}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{F1511C59-D7C7-47E0-8CA4-E7C3A5A6EE5D}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{F1511C59-D7C7-47E0-8CA4-E7C3A5A6EE5D}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

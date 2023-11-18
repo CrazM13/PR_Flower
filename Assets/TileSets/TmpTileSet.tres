@@ -1,0 +1,52 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bfkvak6a82rpe"]
+
+[ext_resource type="Texture2D" uid="uid://dbuqlk5226c33" path="res://Assets/Textures/Tiles/TmpTiles.png" id="1_ug6cu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mklfa"]
+resource_name = "TmpTiles"
+texture = ExtResource("1_ug6cu")
+texture_region_size = Vector2i(64, 64)
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:0/1 = 1
+0:0/1/modulate = Color(1, 0.788235, 0.54902, 1)
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/1/physics_layer_0/angular_velocity = 0.0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:0/1/custom_data_0 = true
+0:1/next_alternative_id = 2
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/custom_data_2 = true
+0:1/1 = 1
+0:1/1/modulate = Color(0.168627, 0.560784, 0.188235, 1)
+0:1/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/1/physics_layer_0/angular_velocity = 0.0
+1:0/next_alternative_id = 2
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/custom_data_2 = true
+1:0/1 = 1
+1:0/1/modulate = Color(0.168627, 0.560784, 0.188235, 1)
+1:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/1/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/custom_data_1 = true
+
+[resource]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "CanPlant"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "CanHarvest"
+custom_data_layer_1/type = 1
+custom_data_layer_2/name = "CanWater"
+custom_data_layer_2/type = 1
+sources/0 = SubResource("TileSetAtlasSource_mklfa")
