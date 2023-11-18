@@ -1,8 +1,10 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bfktjmkyndo8e"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bfktjmkyndo8e"]
 
 [ext_resource type="Script" path="res://Scripts/TileInteractions/TileinteractionReplace.cs" id="1_3jy5s"]
+[ext_resource type="Resource" uid="uid://bgmra1wukj122" path="res://Data/TileProxies/DirtMound.tres" id="1_dny55"]
+[ext_resource type="Resource" uid="uid://yfu1hej8mmy6" path="res://Data/TileProxies/SeedTile.tres" id="2_webpb"]
 
 [resource]
 script = ExtResource("1_3jy5s")
-newTile = 0
-effectedTile = 0
+newTile = ExtResource("2_webpb")
+effectedTile = ExtResource("1_dny55")

@@ -4,7 +4,7 @@ using System;
 public partial class TileCursor : AnimatedSprite2D {
 
 	[Export] private PlayerMovement player;
-	[Export] private TileMap tileMap;
+	[Export] private MapManager tileMap;
 
 	public override void _Ready() {
 		base._Ready();
@@ -24,8 +24,8 @@ public partial class TileCursor : AnimatedSprite2D {
 			this.Modulate = Color.FromHsv(0, 1, 1, CanInteract() ? 1 : 0.5f);
 		}
 
-		if (Input.IsMouseButtonPressed(MouseButton.Left)) {
-			GD.Print($"Cell: {tileMap.GetCellAtlasCoords(0, tileMap.LocalToMap(this.Position))}");
+		if (Input.IsActionJustPressed("action_interact")) {
+			tileMap.Intereact(tileMap.LocalToMap(this.Position));
 		}
 
 	}

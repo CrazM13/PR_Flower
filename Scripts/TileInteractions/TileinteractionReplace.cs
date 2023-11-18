@@ -9,6 +9,7 @@ public partial class TileinteractionReplace : TileInteraction {
 		base.OnIntereact(tileMap, cell, layer);
 
 		tileMap.SetCell(layer, cell, newTile.Source, newTile.AtlasCoords, newTile.Alternative);
+		GD.Print("TEST");
 
 		return true;
 	}

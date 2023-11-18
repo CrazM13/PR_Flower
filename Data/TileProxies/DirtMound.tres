@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bgmra1wukj122"]
+
+[ext_resource type="Script" path="res://Scripts/Tile.cs" id="1_s58mc"]
+
+[resource]
+script = ExtResource("1_s58mc")
+Source = 1
+AtlasCoords = Vector2i(0, 0)
+Alternative = 0

@@ -13,4 +13,6 @@ public partial class TileInteraction : Resource {
 		return effectedTile.MatchesTileMap(tileMap, layer, cell);
 	}
 
+	public Tile GetEffectedTile() { return effectedTile; }
+
 }
