@@ -6,22 +6,26 @@ public partial class TileCursor : AnimatedSprite2D {
 	[Export] private PlayerMovement player;
 	[Export] private TileMap tileMap;
 
-	
+	public override void _Ready() {
+		base._Ready();
+
+		this.Play("default");
+	}
 
 	public override void _Process(double delta) {
 
 		Vector2I direction = player.Direction;
-		if (direction == Vector2I.Zero) {
-			this.Hide();
-		} else {
-			this.Show();
-
+		if (direction != Vector2I.Zero) {
 			Vector2 roughPos = player.Position;
 			Vector2 position = tileMap.MapToLocal(tileMap.LocalToMap(roughPos) + direction);
 
 			this.Position = position;
 
 			this.Modulate = Color.FromHsv(0, 1, 1, CanInteract() ? 1 : 0.5f);
+		}
+
+		if (Input.IsMouseButtonPressed(MouseButton.Left)) {
+			GD.Print($"Cell: {tileMap.GetCellAtlasCoords(0, tileMap.LocalToMap(this.Position))}");
 		}
 
 	}

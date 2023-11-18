@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bfktjmkyndo8e"]
+
+[ext_resource type="Script" path="res://Scripts/TileInteractions/TileinteractionReplace.cs" id="1_3jy5s"]
+
+[resource]
+script = ExtResource("1_3jy5s")
+newTile = 0
+effectedTile = 0
