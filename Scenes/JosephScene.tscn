@@ -1,17 +1,31 @@
-[gd_scene load_steps=14 format=3 uid="uid://ch0yli1p75mgr"]
+[gd_scene load_steps=15 format=3 uid="uid://ch0yli1p75mgr"]
 
 [ext_resource type="TileSet" uid="uid://edvk2u58iyqo" path="res://Assets/TileSets/ArtTileSet.tres" id="1_fru0m"]
 [ext_resource type="Script" path="res://Scripts/Plants/PlantManager.cs" id="2_fxy43"]
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.cs" id="2_p7vn5"]
 [ext_resource type="Texture2D" uid="uid://2f3otau18v7f" path="res://Assets/Textures/SelectionBox.png" id="4_63gpw"]
+[ext_resource type="Texture2D" uid="uid://vc2hvrjad035" path="res://Assets/Textures/Art/Atlas/Flower_PR_Atlas.png" id="4_ofsk3"]
 [ext_resource type="Script" path="res://Scripts/TileCursor.cs" id="5_3fthu"]
-[ext_resource type="Texture2D" uid="uid://bbifs2gks6smi" path="res://Assets/Textures/Art/Character/Chibi_Idle.png" id="5_7o0e3"]
-[ext_resource type="Resource" uid="uid://c5mm4w140m7cf" path="res://Data/Plants/BasicFlower.tres" id="7_18p7p"]
 [ext_resource type="Texture2D" uid="uid://cpyt4jjslthkn" path="res://Assets/Textures/Art/Background.png" id="8_2tawd"]
 [ext_resource type="Script" path="res://Scripts/UI/HUDCurrency.cs" id="9_5k1vu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jum0"]
-size = Vector2(1080, 1080)
+size = Vector2(64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5qyq"]
+atlas = ExtResource("4_ofsk3")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tl7q4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5qyq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nsvca"]
 atlas = ExtResource("4_63gpw")
@@ -41,14 +55,21 @@ animations = [{
 tile_set = ExtResource("1_fru0m")
 format = 2
 layer_0/name = "background"
-layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 1, 0, 2, 0, 0)
-layer_1/name = "plants"
+layer_0/tile_data = PackedInt32Array(262145, 6, 6, 327681, 6, 7, 196610, 65542, 5, 262146, 65542, 6, 327682, 65542, 7, 196611, 131078, 5, 262147, 131078, 6, 327683, 131078, 7, 196612, 196614, 5, 262148, 196614, 6, 327684, 196614, 7, 196613, 262150, 5, 262149, 262150, 6, 327685, 262150, 7, 196614, 327686, 5, 262150, 327686, 6, 327686, 327686, 7, 196615, 393222, 5, 262151, 393222, 6, 327687, 393222, 7, 262152, 458758, 6, 327688, 458758, 7, 262155, 6, 6, 327691, 6, 7, 196620, 65542, 5, 262156, 65542, 6, 327692, 65542, 7, 196621, 131078, 5, 262157, 131078, 6, 327693, 131078, 7, 196622, 196614, 5, 262158, 196614, 6, 327694, 196614, 7, 196623, 262150, 5, 262159, 262150, 6, 327695, 262150, 7, 196624, 327686, 5, 262160, 327686, 6, 327696, 327686, 7, 196625, 393222, 5, 262161, 393222, 6, 327697, 393222, 7, 262162, 458758, 6, 327698, 458758, 7)
+layer_1/name = "decoration"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
+layer_1/tile_data = PackedInt32Array(196612, 6, 3, 262148, 6, 4, 196613, 65542, 3, 262149, 65542, 4, 196614, 131078, 3, 262150, 131078, 4, 196622, 6, 3, 262158, 6, 4, 196623, 65542, 3, 262159, 65542, 4, 196624, 131078, 3, 262160, 131078, 4)
+layer_2/name = "plants"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()
 script = ExtResource("2_fxy43")
 
 [node name="Timer" type="Timer" parent="TileMap"]
@@ -61,21 +82,22 @@ JumpVelocity = -800.0
 gravityScale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_3jum0")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("5_7o0e3")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_tl7q4")
+animation = &"idle"
+offset = Vector2(0, -32)
 
 [node name="TileCursor" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("player", "tileMap")]
 position = Vector2(96, 118)
-scale = Vector2(16.875, 16.875)
 sprite_frames = SubResource("SpriteFrames_6npim")
 frame_progress = 0.843868
 speed_scale = 0.25
 script = ExtResource("5_3fthu")
 player = NodePath("../Player")
 tileMap = NodePath("../TileMap")
-seed = ExtResource("7_18p7p")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -100
@@ -84,16 +106,21 @@ texture = ExtResource("8_2tawd")
 centered = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(956, 560)
-zoom = Vector2(0.25, 0.25)
+position = Vector2(609, 336)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
 
-[node name="TextureRect" type="TextureRect" parent="HUD/HBoxContainer"]
+[node name="Container" type="Container" parent="HUD/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/HBoxContainer/Container"]
+texture = ExtResource("4_ofsk3")
+centered = false
+region_enabled = true
+region_rect = Rect2(576, 384, 64, 64)
 
 [node name="Label" type="Label" parent="HUD/HBoxContainer"]
 layout_mode = 2

@@ -43,7 +43,7 @@ public partial class TileCursor : AnimatedSprite2D {
 		if (tileMap.IsPlantAt(cell)) {
 			return true;
 		} else {
-			TileData data = tileMap.GetCellTileData(0, cell);
+			TileData data = tileMap.GetCellTileData(1, cell);
 			if (data != null) {
 				bool canPlant = data.GetCustomData("CanPlant").AsBool();
 

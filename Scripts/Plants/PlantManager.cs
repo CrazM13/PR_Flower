@@ -23,7 +23,7 @@ public partial class PlantManager : TileMap {
 	}
 
 	public void RemovePlant(Vector2I position) {
-		EraseCell(1, position);
+		EraseCell(2, position);
 		plants.Remove(position);
 	}
 
@@ -31,7 +31,7 @@ public partial class PlantManager : TileMap {
 		foreach (PlantInstance plant in plants.Values) {
 			if (plant.IsDirty) {
 				PlantStage stage = plant.PlantData.stages[plant.CurrentStage];
-				SetCell(1, plant.Position, stage.TileSource, stage.TileAtlasCoords, stage.TileAlternative);
+				SetCell(2, plant.Position, stage.TileSource, stage.TileAtlasCoords, stage.TileAlternative);
 				plant.IsDirty = false;
 			}
 		}
