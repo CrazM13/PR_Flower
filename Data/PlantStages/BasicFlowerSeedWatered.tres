@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://n63ldjnmkunl"]
+
+[ext_resource type="Script" path="res://Scripts/Plants/PlantStage.cs" id="1_f1j5u"]
+
+[resource]
+script = ExtResource("1_f1j5u")
+canWater = false
+canGrow = true
+canHarvest = false
+TileSource = 2
+TileAtlasCoords = Vector2i(0, 0)
+TileAlternative = 1

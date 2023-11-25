@@ -4,7 +4,8 @@ using System;
 public partial class TileCursor : AnimatedSprite2D {
 
 	[Export] private PlayerMovement player;
-	[Export] private MapManager tileMap;
+	[Export] private PlantManager tileMap;
+	[Export] private PlantData seed;
 
 	public override void _Ready() {
 		base._Ready();
@@ -20,12 +21,19 @@ public partial class TileCursor : AnimatedSprite2D {
 			Vector2 position = tileMap.MapToLocal(tileMap.LocalToMap(roughPos) + direction);
 
 			this.Position = position;
-
-			this.Modulate = Color.FromHsv(0, 1, 1, CanInteract() ? 1 : 0.5f);
 		}
 
-		if (Input.IsActionJustPressed("action_interact")) {
-			tileMap.Intereact(tileMap.LocalToMap(this.Position));
+		bool canInteract = CanInteract();
+
+		this.Modulate = Color.FromHsv(0, 1, 1, canInteract ? 1 : 0.5f);
+
+		if (canInteract && Input.IsActionJustPressed("action_interact")) {
+			Vector2I cell = tileMap.LocalToMap(this.Position);
+
+			if (tileMap.IsPlantAt(cell)) tileMap.InteractWithPlant(cell);
+			else {
+				tileMap.AddPlant(seed, cell);
+			}
 		}
 
 	}
@@ -33,13 +41,15 @@ public partial class TileCursor : AnimatedSprite2D {
 	public bool CanInteract() {
 		Vector2I cell = tileMap.LocalToMap(this.Position);
 
-		TileData data = tileMap.GetCellTileData(0, cell);
-		if (data != null) {
-			bool canPlant = data.GetCustomData("CanPlant").AsBool();
-			bool canHarvest = data.GetCustomData("CanHarvest").AsBool();
-			bool canWater = data.GetCustomData("CanWater").AsBool();
+		if (tileMap.IsPlantAt(cell)) {
+			return true;
+		} else {
+			TileData data = tileMap.GetCellTileData(0, cell);
+			if (data != null) {
+				bool canPlant = data.GetCustomData("CanPlant").AsBool();
 
-			return canPlant || canWater || canHarvest;
+				return canPlant;
+			}
 		}
 
 		return false;

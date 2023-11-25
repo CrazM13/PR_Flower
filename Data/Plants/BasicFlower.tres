@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://c5mm4w140m7cf"]
+
+[ext_resource type="Script" path="res://Scripts/Plants/BasicPlant.cs" id="1_n6xba"]
+[ext_resource type="Resource" uid="uid://dtca6txh6o5rn" path="res://Data/PlantStages/BasicFlowerSeed.tres" id="2_2fuhg"]
+[ext_resource type="Resource" uid="uid://n63ldjnmkunl" path="res://Data/PlantStages/BasicFlowerSeedWatered.tres" id="3_twkx3"]
+[ext_resource type="Resource" uid="uid://cdq6q6hdyycn5" path="res://Data/PlantStages/BasicFlowerGrowth1.tres" id="4_7jc21"]
+[ext_resource type="Resource" uid="uid://25dxiyeoig5u" path="res://Data/PlantStages/BasicFlowerGrowth1Watered.tres" id="5_ljaqi"]
+[ext_resource type="Resource" uid="uid://iw6oj1xcjxyv" path="res://Data/PlantStages/BasicFlowerGrowth2.tres" id="6_0secp"]
+
+[resource]
+script = ExtResource("1_n6xba")
+stages = Array[Object]([ExtResource("2_2fuhg"), ExtResource("3_twkx3"), ExtResource("4_7jc21"), ExtResource("5_ljaqi"), ExtResource("6_0secp")])

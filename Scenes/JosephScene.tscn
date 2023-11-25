@@ -1,18 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://ch0yli1p75mgr"]
+[gd_scene load_steps=13 format=3 uid="uid://ch0yli1p75mgr"]
 
 [ext_resource type="TileSet" uid="uid://edvk2u58iyqo" path="res://Assets/TileSets/ArtTileSet.tres" id="1_fru0m"]
-[ext_resource type="Script" path="res://Scripts/MapManager.cs" id="2_4mcyt"]
+[ext_resource type="Script" path="res://Scripts/Plants/PlantManager.cs" id="2_fxy43"]
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.cs" id="2_p7vn5"]
-[ext_resource type="Resource" uid="uid://bfktjmkyndo8e" path="res://Data/TileInteractions/DirtMound.tres" id="3_ladr7"]
 [ext_resource type="Texture2D" uid="uid://2f3otau18v7f" path="res://Assets/Textures/SelectionBox.png" id="4_63gpw"]
-[ext_resource type="Resource" uid="uid://bouc2scg0anh1" path="res://Data/TileInteractions/WaterSeed.tres" id="4_np0fm"]
 [ext_resource type="Script" path="res://Scripts/TileCursor.cs" id="5_3fthu"]
 [ext_resource type="Texture2D" uid="uid://bbifs2gks6smi" path="res://Assets/Textures/Art/Character/Chibi_Idle.png" id="5_7o0e3"]
-[ext_resource type="Resource" uid="uid://o1oeof8afead" path="res://Data/TileInteractions/GrowSeed.tres" id="5_py4xn"]
-[ext_resource type="Resource" uid="uid://0p1kh62wwnl6" path="res://Data/TileInteractions/WaterGrowth1.tres" id="6_muvit"]
-[ext_resource type="Resource" uid="uid://bjtqicafw26a0" path="res://Data/TileInteractions/GrowGrowth1.tres" id="7_cihc4"]
+[ext_resource type="Resource" uid="uid://c5mm4w140m7cf" path="res://Data/Plants/BasicFlower.tres" id="7_18p7p"]
 [ext_resource type="Texture2D" uid="uid://cpyt4jjslthkn" path="res://Assets/Textures/Art/Background.png" id="8_2tawd"]
-[ext_resource type="Resource" uid="uid://bwckdx01bvbty" path="res://Data/TileInteractions/HarvestGrowth2.tres" id="8_040xd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jum0"]
 size = Vector2(1080, 1080)
@@ -44,9 +39,16 @@ animations = [{
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_fru0m")
 format = 2
+layer_0/name = "background"
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 1, 0, 2, 0, 0)
-script = ExtResource("2_4mcyt")
-tileInteractions = Array[Resource]([ExtResource("3_ladr7"), ExtResource("4_np0fm"), ExtResource("5_py4xn"), ExtResource("6_muvit"), ExtResource("7_cihc4"), ExtResource("8_040xd")])
+layer_1/name = "plants"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
+script = ExtResource("2_fxy43")
 
 [node name="Timer" type="Timer" parent="TileMap"]
 autostart = true
@@ -72,6 +74,7 @@ speed_scale = 0.25
 script = ExtResource("5_3fthu")
 player = NodePath("../Player")
 tileMap = NodePath("../TileMap")
+seed = ExtResource("7_18p7p")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -100
@@ -83,4 +86,4 @@ centered = false
 position = Vector2(956, 560)
 zoom = Vector2(0.25, 0.25)
 
-[connection signal="timeout" from="TileMap/Timer" to="TileMap" method="TickAll"]
+[connection signal="timeout" from="TileMap/Timer" to="TileMap" method="GrowAll"]
