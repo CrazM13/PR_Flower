@@ -17,6 +17,8 @@ public partial class PlantManager : TileMap {
 
 		PlantInstance newPlant = new PlantInstance(this, plantData, position);
 		plants.Add(position, newPlant);
+
+
 		newPlant.IsDirty = true;
 	}
 
