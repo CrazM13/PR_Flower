@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ch0yli1p75mgr"]
+[gd_scene load_steps=14 format=3 uid="uid://ch0yli1p75mgr"]
 
 [ext_resource type="TileSet" uid="uid://edvk2u58iyqo" path="res://Assets/TileSets/ArtTileSet.tres" id="1_fru0m"]
 [ext_resource type="Script" path="res://Scripts/Plants/PlantManager.cs" id="2_fxy43"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bbifs2gks6smi" path="res://Assets/Textures/Art/Character/Chibi_Idle.png" id="5_7o0e3"]
 [ext_resource type="Resource" uid="uid://c5mm4w140m7cf" path="res://Data/Plants/BasicFlower.tres" id="7_18p7p"]
 [ext_resource type="Texture2D" uid="uid://cpyt4jjslthkn" path="res://Assets/Textures/Art/Background.png" id="8_2tawd"]
+[ext_resource type="Script" path="res://Scripts/UI/HUDCurrency.cs" id="9_5k1vu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jum0"]
 size = Vector2(1080, 1080)
@@ -85,5 +86,20 @@ centered = false
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(956, 560)
 zoom = Vector2(0.25, 0.25)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
+
+[node name="TextureRect" type="TextureRect" parent="HUD/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HUD/HBoxContainer"]
+layout_mode = 2
+text = "0"
+vertical_alignment = 1
+script = ExtResource("9_5k1vu")
+currencyDisplayMinLength = 4
 
 [connection signal="timeout" from="TileMap/Timer" to="TileMap" method="GrowAll"]

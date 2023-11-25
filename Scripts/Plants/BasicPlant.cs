@@ -15,7 +15,7 @@ public partial class BasicPlant : PlantData {
 			instance.CurrentStage++;
 			instance.IsDirty = true;
 		} else if (instance.PlantData.stages[instance.CurrentStage].canHarvest) {
-			instance.RemovePlant();
+			instance.HarvestPlant();
 		}
 	}
 }

@@ -17,6 +17,14 @@ public partial class PlantInstance : GodotObject {
 		PlantData = plant;
 	}
 
+	public void HarvestPlant() {
+		if (PlantData.stages[CurrentStage].canHarvest) {
+			Wallet.Instance.Currency++;
+		}
+
+		RemovePlant();
+	}
+
 	public void RemovePlant() {
 		manager.RemovePlant(Position);
 	}

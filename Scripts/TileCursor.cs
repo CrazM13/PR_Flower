@@ -5,7 +5,6 @@ public partial class TileCursor : AnimatedSprite2D {
 
 	[Export] private PlayerMovement player;
 	[Export] private PlantManager tileMap;
-	[Export] private PlantData seed;
 
 	public override void _Ready() {
 		base._Ready();
@@ -32,7 +31,7 @@ public partial class TileCursor : AnimatedSprite2D {
 
 			if (tileMap.IsPlantAt(cell)) tileMap.InteractWithPlant(cell);
 			else {
-				tileMap.AddPlant(seed, cell);
+				tileMap.AddPlant(Wallet.Instance.SeedPouch.GetNextSeed(), cell);
 			}
 		}
 
