@@ -2,13 +2,10 @@ using Godot;
 using System;
 
 public partial class PlayerMovement : CharacterBody2D {
-	[Export] private PlantManager tileMap;
-
 	[Export] private float Speed = 300.0f;
 	[Export] private float JumpVelocity = -400.0f;
 	[Export] private float gravityScale = 1;
 
-	public PlantManager TileMap => tileMap;
 	private Vector2I lookDirection = Vector2I.Right;
 	public Vector2I Direction { get => lookDirection; set => lookDirection = value; }
 	public bool IsGrounded { get => IsOnFloor(); }
