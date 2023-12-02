@@ -3,6 +3,7 @@ using System;
 
 public partial class PlayerMovement : CharacterBody2D {
 	[Export] private PlantManager tileMap;
+	[Export] private Camera2D camera;
 
 	[Export] private float Speed = 300.0f;
 	[Export] private float JumpVelocity = -400.0f;
@@ -47,8 +48,27 @@ public partial class PlayerMovement : CharacterBody2D {
 
 		Velocity = velocity;
 		MoveAndSlide();
+
+		ScreenWrap();
 	}
 
+	private void ScreenWrap() {
+		Rect2 viewport = GetViewportRect();
 
+		Vector2 start = Vector2.Zero;
+		Vector2 end = viewport.Size / camera.Zoom;
+
+		if (this.Position.X > end.X) {
+			this.Position = new Vector2(start.X, this.Position.Y);
+		} else if (this.Position.X < start.X) {
+			this.Position = new Vector2(end.X, this.Position.Y);
+		}
+
+		if (this.Position.Y > end.Y) {
+			this.Position = new Vector2(this.Position.X, start.Y);
+		} else if (this.Position.Y < start.Y) {
+			this.Position = new Vector2(this.Position.X, end.Y);
+		}
+	}
 
 }
