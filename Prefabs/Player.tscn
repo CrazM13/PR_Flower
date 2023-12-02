@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dwhdsagbqbdge" path="res://Prefabs/TileCursor.tscn" id="4_f7t3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jum0"]
-size = Vector2(64, 128)
+size = Vector2(60, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ayxka"]
 atlas = ExtResource("2_pa1lv")
@@ -90,12 +90,12 @@ JumpVelocity = -800.0
 gravityScale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -28)
 shape = SubResource("RectangleShape2D_3jum0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("player")]
 sprite_frames = SubResource("SpriteFrames_tl7q4")
-animation = &"harvest_action"
+animation = &"idle"
 offset = Vector2(0, -32)
 script = ExtResource("3_rh8qa")
 player = NodePath("..")
