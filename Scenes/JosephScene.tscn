@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://edvk2u58iyqo" path="res://Assets/TileSets/ArtTileSet.tres" id="1_fru0m"]
 [ext_resource type="Script" path="res://Scripts/Plants/PlantManager.cs" id="2_fxy43"]
-[ext_resource type="Script" path="res://Scripts/PlayerMovement.cs" id="2_p7vn5"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.cs" id="2_p7vn5"]
 [ext_resource type="Texture2D" uid="uid://2f3otau18v7f" path="res://Assets/Textures/SelectionBox.png" id="4_63gpw"]
 [ext_resource type="Texture2D" uid="uid://vc2hvrjad035" path="res://Assets/Textures/Art/Atlas/Flower_PR_Atlas.png" id="4_ofsk3"]
 [ext_resource type="Script" path="res://Scripts/TileCursor.cs" id="5_3fthu"]
