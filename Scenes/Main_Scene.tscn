@@ -1,0 +1,131 @@
+[gd_scene load_steps=16 format=3 uid="uid://oipn2bf04w1x"]
+
+[ext_resource type="TileSet" uid="uid://edvk2u58iyqo" path="res://Assets/TileSets/ArtTileSet.tres" id="1_rpkl8"]
+[ext_resource type="Script" path="res://Scripts/Plants/PlantManager.cs" id="2_leoec"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.cs" id="3_cd88s"]
+[ext_resource type="Texture2D" uid="uid://vc2hvrjad035" path="res://Assets/Textures/Art/Atlas/Flower_PR_Atlas.png" id="4_hph3u"]
+[ext_resource type="Texture2D" uid="uid://2f3otau18v7f" path="res://Assets/Textures/SelectionBox.png" id="5_bqva0"]
+[ext_resource type="Script" path="res://Scripts/TileCursor.cs" id="6_icirk"]
+[ext_resource type="Texture2D" uid="uid://cpyt4jjslthkn" path="res://Assets/Textures/Art/Background.png" id="7_7bcyy"]
+[ext_resource type="Script" path="res://Scripts/UI/HUDCurrency.cs" id="8_8c8tr"]
+[ext_resource type="Texture2D" uid="uid://b1k4ychu80n7v" path="res://Assets/Textures/Art/Flower_PR_Mockup.png" id="9_hkpdn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jum0"]
+size = Vector2(64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5qyq"]
+atlas = ExtResource("4_hph3u")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tl7q4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5qyq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsvca"]
+atlas = ExtResource("5_bqva0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqkqe"]
+atlas = ExtResource("5_bqva0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6npim"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsvca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqkqe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="JosephScene" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_rpkl8")
+format = 2
+layer_0/name = "background"
+layer_0/tile_data = PackedInt32Array(983045, 6, 6, 917513, 262150, 5, 983049, 262150, 6, 851968, 65542, 5, 983039, 6, 6, 1048575, 6, 7, 917508, 458758, 6, 983044, 458758, 7, 917510, 65542, 5, 983046, 65542, 6, 983047, 131078, 6, 917511, 131078, 5, 983048, 196614, 6, 917512, 196614, 5, 983040, 65542, 7, 983041, 196614, 7, 983042, 262150, 7, 917506, 262150, 6, 917507, 393222, 6, 983043, 393222, 7, 917504, 65542, 6, 917505, 196614, 6, 851971, 393222, 5, 851970, 262150, 5, 1048581, 6, 7, 1048582, 65542, 7, 1048583, 131078, 7, 1048584, 196614, 7, 1048585, 262150, 7, 917514, 327686, 5, 983050, 327686, 6, 1048586, 327686, 7, 917515, 393222, 5, 983051, 393222, 6, 1048587, 393222, 7, 983052, 458758, 6, 1048588, 458758, 7, 851982, 6, 6, 917518, 6, 7, 786447, 65542, 5, 851983, 65542, 6, 917519, 65542, 7, 786448, 131078, 5, 851984, 131078, 6, 917520, 131078, 7, 786449, 196614, 5, 851985, 196614, 6, 917521, 196614, 7, 786450, 262150, 5, 851986, 262150, 6, 917522, 262150, 7, 786451, 327686, 5, 851987, 327686, 6, 917523, 327686, 7, 786452, 393222, 5, 851988, 393222, 6, 917524, 393222, 7, 851989, 458758, 6, 917525, 458758, 7, 589841, 196614, 6, 720906, 196614, 6, 720919, 65542, 6, 720920, 131078, 6, 589842, 65542, 6, 589843, 131078, 6, 720904, 65542, 6, 720905, 131078, 6, 720903, 393222, 6, 720902, 6, 7, 720907, 458758, 7, 720896, 65542, 6, 524289, 6, 6, 458754, 65542, 5, 524290, 131078, 6, 524291, 196614, 6, 458756, 327686, 5, 524292, 262150, 6, 524293, 458758, 6, 393223, 6, 6, 327688, 131078, 5, 393224, 196614, 6, 393225, 262150, 6, 327690, 262150, 5, 393226, 327686, 6, 327691, 327686, 5, 393227, 393222, 6, 393228, 458758, 6, 131086, 131078, 5, 131088, 65542, 5, 196621, 6, 6, 196622, 131078, 6, 196623, 196614, 6, 196624, 262150, 6, 196625, 458758, 6, 655373, 196614, 6)
+layer_1/name = "decoration"
+layer_1/tile_data = PackedInt32Array(655369, 6, 3, 720905, 6, 4, 655370, 65542, 3, 720906, 65542, 4, 655371, 131078, 3, 720907, 131078, 4, 851974, 6, 3, 917510, 6, 4, 851975, 65542, 3, 917511, 65542, 4, 851976, 131078, 3, 917512, 131078, 4, 851968, 6, 3, 917504, 6, 4, 851969, 65542, 3, 917505, 65542, 4, 851970, 131078, 3, 917506, 131078, 4, 720895, 6, 3, 786431, 6, 4, 655360, 65542, 3, 720896, 65542, 4, 655361, 131078, 3, 720897, 131078, 4, 589828, 6, 3, 655364, 6, 4, 589829, 65542, 3, 655365, 65542, 4, 589830, 131078, 3, 655366, 131078, 4, 131081, 6, 3, 196617, 6, 4, 131082, 65542, 3, 196618, 65542, 4, 131083, 131078, 3, 196619, 131078, 4, 262148, 6, 3, 327684, 6, 4, 262149, 65542, 3, 327685, 65542, 4, 262150, 131078, 3, 327686, 131078, 4, 393216, 6, 3, 458752, 6, 4, 393217, 65542, 3, 458753, 65542, 4, 393218, 131078, 3, 458754, 131078, 4)
+layer_2/name = "plants"
+layer_2/tile_data = PackedInt32Array()
+script = ExtResource("2_leoec")
+
+[node name="Timer" type="Timer" parent="TileMap"]
+autostart = true
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(250, 800)
+script = ExtResource("3_cd88s")
+JumpVelocity = -900.0
+gravityScale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_3jum0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_tl7q4")
+animation = &"idle"
+offset = Vector2(0, -32)
+
+[node name="TileCursor" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("player", "tileMap")]
+position = Vector2(96, 118)
+sprite_frames = SubResource("SpriteFrames_6npim")
+frame_progress = 0.843868
+speed_scale = 0.25
+script = ExtResource("6_icirk")
+player = NodePath("../Player")
+tileMap = NodePath("../TileMap")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+z_as_relative = false
+position = Vector2(8, 9)
+texture = ExtResource("7_7bcyy")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.6, 0.6)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
+
+[node name="Container" type="Container" parent="HUD/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/HBoxContainer/Container"]
+texture = ExtResource("4_hph3u")
+centered = false
+region_enabled = true
+region_rect = Rect2(576, 384, 64, 64)
+
+[node name="Label" type="Label" parent="HUD/HBoxContainer"]
+layout_mode = 2
+text = "0"
+vertical_alignment = 1
+script = ExtResource("8_8c8tr")
+currencyDisplayMinLength = 4
+
+[node name="FlowerPrMockup" type="Sprite2D" parent="."]
+visible = false
+show_behind_parent = true
+position = Vector2(371, 540)
+texture = ExtResource("9_hkpdn")
+
+[connection signal="timeout" from="TileMap/Timer" to="TileMap" method="GrowAll"]

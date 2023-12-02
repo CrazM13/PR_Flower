@@ -127,6 +127,9 @@ script = ExtResource("2_fxy43")
 wait_time = 5.0
 autostart = true
 
+<<<<<<< Updated upstream
+[node name="Player" parent="SceneBase" node_paths=PackedStringArray("tileMap") instance=ExtResource("3_emu3h")]
+=======
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(96, 118)
 script = ExtResource("2_p7vn5")
@@ -144,14 +147,14 @@ offset = Vector2(0, -32)
 script = ExtResource("5_6gdsg")
 player = NodePath("..")
 
-[node name="TileCursor" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("player", "animator", "tileMap")]
+[node name="TileCursor" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("player", "tileMap")]
 position = Vector2(96, 118)
 sprite_frames = SubResource("SpriteFrames_6npim")
 frame_progress = 0.843868
 speed_scale = 0.25
 script = ExtResource("5_3fthu")
 player = NodePath("../Player")
-animator = NodePath("../Player/AnimatedSprite2D")
+>>>>>>> Stashed changes
 tileMap = NodePath("../TileMap")
 
 [node name="Background" type="Sprite2D" parent="."]
