@@ -1,3 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
 .vs/
+PR_Flower/.vs
+.vs/PR_Flower/
