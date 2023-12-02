@@ -4,6 +4,7 @@ using System;
 public partial class TileCursor : AnimatedSprite2D {
 
 	[Export] private PlayerMovement player;
+	[Export] private PlayerAnimator animator;
 	[Export] private PlantManager tileMap;
 
 	public override void _Ready() {
@@ -29,9 +30,12 @@ public partial class TileCursor : AnimatedSprite2D {
 		if (canInteract && Input.IsActionJustPressed("action_interact")) {
 			Vector2I cell = tileMap.LocalToMap(this.Position);
 
-			if (tileMap.IsPlantAt(cell)) tileMap.InteractWithPlant(cell);
-			else {
+			if (tileMap.IsPlantAt(cell)) {
+				PlayerAnimator.AnimationEvent @event = tileMap.InteractWithPlant(cell);
+				if (@event != null) animator.ForceOverride(@event);
+			} else {
 				tileMap.AddPlant(Wallet.Instance.SeedPouch.GetNextSeed(), cell);
+				animator.ForceOverride("plant_action");
 			}
 		}
 

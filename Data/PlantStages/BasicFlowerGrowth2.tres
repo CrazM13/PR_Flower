@@ -7,6 +7,7 @@ script = ExtResource("1_hjd1w")
 canWater = false
 canGrow = false
 canHarvest = true
+playerActionAnim = "harvest_action"
 TileSource = 6
 TileAtlasCoords = Vector2i(10, 2)
 TileAlternative = 0

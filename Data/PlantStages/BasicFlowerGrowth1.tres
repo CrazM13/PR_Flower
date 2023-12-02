@@ -7,6 +7,7 @@ script = ExtResource("1_ppn7t")
 canWater = true
 canGrow = false
 canHarvest = false
+playerActionAnim = "water_action"
 TileSource = 6
 TileAtlasCoords = Vector2i(7, 3)
 TileAlternative = 0

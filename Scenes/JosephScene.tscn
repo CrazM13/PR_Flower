@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ch0yli1p75mgr"]
+[gd_scene load_steps=21 format=3 uid="uid://ch0yli1p75mgr"]
 
 [ext_resource type="TileSet" uid="uid://edvk2u58iyqo" path="res://Assets/TileSets/ArtTileSet.tres" id="1_fru0m"]
 [ext_resource type="Script" path="res://Scripts/Plants/PlantManager.cs" id="2_fxy43"]
@@ -6,24 +6,85 @@
 [ext_resource type="Texture2D" uid="uid://2f3otau18v7f" path="res://Assets/Textures/SelectionBox.png" id="4_63gpw"]
 [ext_resource type="Texture2D" uid="uid://vc2hvrjad035" path="res://Assets/Textures/Art/Atlas/Flower_PR_Atlas.png" id="4_ofsk3"]
 [ext_resource type="Script" path="res://Scripts/TileCursor.cs" id="5_3fthu"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerAnimator.cs" id="5_6gdsg"]
 [ext_resource type="Texture2D" uid="uid://cpyt4jjslthkn" path="res://Assets/Textures/Art/Background.png" id="8_2tawd"]
 [ext_resource type="Script" path="res://Scripts/UI/HUDCurrency.cs" id="9_5k1vu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jum0"]
 size = Vector2(64, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayxka"]
+atlas = ExtResource("4_ofsk3")
+region = Rect2(258, 0, 86, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5qyq"]
 atlas = ExtResource("4_ofsk3")
 region = Rect2(0, 0, 64, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc15j"]
+atlas = ExtResource("4_ofsk3")
+region = Rect2(178, 0, 77, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex7be"]
+atlas = ExtResource("4_ofsk3")
+region = Rect2(513, 0, 86, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guqqs"]
+atlas = ExtResource("4_ofsk3")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amc8w"]
+atlas = ExtResource("4_ofsk3")
+region = Rect2(384, 0, 86, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_tl7q4"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayxka")
+}],
+"loop": true,
+"name": &"harvest_action",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i5qyq")
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc15j")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex7be")
+}],
+"loop": true,
+"name": &"plant_action",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guqqs")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amc8w")
+}],
+"loop": true,
+"name": &"water_action",
 "speed": 5.0
 }]
 
@@ -63,6 +124,7 @@ layer_2/tile_data = PackedInt32Array()
 script = ExtResource("2_fxy43")
 
 [node name="Timer" type="Timer" parent="TileMap"]
+wait_time = 5.0
 autostart = true
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -75,18 +137,21 @@ gravityScale = 2.0
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_3jum0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" node_paths=PackedStringArray("player")]
 sprite_frames = SubResource("SpriteFrames_tl7q4")
-animation = &"idle"
+animation = &"harvest_action"
 offset = Vector2(0, -32)
+script = ExtResource("5_6gdsg")
+player = NodePath("..")
 
-[node name="TileCursor" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("player", "tileMap")]
+[node name="TileCursor" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("player", "animator", "tileMap")]
 position = Vector2(96, 118)
 sprite_frames = SubResource("SpriteFrames_6npim")
 frame_progress = 0.843868
 speed_scale = 0.25
 script = ExtResource("5_3fthu")
 player = NodePath("../Player")
+animator = NodePath("../Player/AnimatedSprite2D")
 tileMap = NodePath("../TileMap")
 
 [node name="Background" type="Sprite2D" parent="."]

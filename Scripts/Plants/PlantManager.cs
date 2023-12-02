@@ -41,10 +41,20 @@ public partial class PlantManager : TileMap {
 		return plants.ContainsKey(position);
 	}
 
-	public void InteractWithPlant(Vector2I position) {
+	public PlayerAnimator.AnimationEvent InteractWithPlant(Vector2I position) {
 		if (plants.ContainsKey(position)) {
-			plants[position].PlantData.OnInteract(plants[position]);
+
+			PlantData plantData = plants[position].PlantData;
+
+			string animName = plantData.stages[plants[position].CurrentStage].playerActionAnim;
+			PlayerAnimator.AnimationEvent anim = string.IsNullOrEmpty(animName) ? null : new PlayerAnimator.AnimationEvent(0.5f, animName);
+
+			plantData.OnInteract(plants[position]);
+
+			return anim;
 		}
+
+		return null;
 	}
 
 	public void GrowPlant(Vector2I position) {
