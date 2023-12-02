@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d027verop72cm"]
+[gd_scene load_steps=7 format=3 uid="uid://dstsp14siy6f2"]
 
 [ext_resource type="TileSet" uid="uid://edvk2u58iyqo" path="res://Assets/TileSets/ArtTileSet.tres" id="1_rpkl8"]
 [ext_resource type="Script" path="res://Scripts/Plants/PlantManager.cs" id="2_leoec"]
 [ext_resource type="PackedScene" uid="uid://dgrpwmqvb4kxs" path="res://Prefabs/GameHUD.tscn" id="6_71pnt"]
 [ext_resource type="Texture2D" uid="uid://cpyt4jjslthkn" path="res://Assets/Textures/Art/Background.png" id="7_7bcyy"]
 [ext_resource type="PackedScene" uid="uid://c010iu45r03bf" path="res://Prefabs/Player.tscn" id="7_aveu1"]
-[ext_resource type="Texture2D" path="res://Assets/Textures/Art/Flower_PR_Mockup.png" id="9_hkpdn"]
+[ext_resource type="Texture2D" uid="uid://b1k4ychu80n7v" path="res://Assets/Textures/Art/Flower_PR_Mockup.png" id="9_hkpdn"]
 
 [node name="Main_Scene" type="Node2D"]
 
