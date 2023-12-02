@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgrpwmqvb4kxs"]
+
+[ext_resource type="Texture2D" uid="uid://vc2hvrjad035" path="res://Assets/Textures/Art/Atlas/Flower_PR_Atlas.png" id="1_80pn3"]
+[ext_resource type="Script" path="res://Scripts/UI/HUDCurrency.cs" id="2_8wanu"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+
+[node name="Container" type="Container" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/Container"]
+texture = ExtResource("1_80pn3")
+centered = false
+region_enabled = true
+region_rect = Rect2(576, 384, 64, 64)
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "0"
+vertical_alignment = 1
+script = ExtResource("2_8wanu")
+currencyDisplayMinLength = 4
